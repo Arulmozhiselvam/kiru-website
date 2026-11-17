@@ -13,6 +13,8 @@ import { LanguageSwitch } from "@/components/ui/LanguageSwitch";
 import { SocialIcon } from "@/components/ui/SocialIcon";
 import { DrawLine } from "@/components/ui/DrawLine";
 import { site } from "@/content/site";
+import { media } from "@/content/media";
+import { Media } from "@/components/ui/Media";
 import { graphemes } from "@/lib/segment";
 
 /** Email link that leans toward the pointer (desktop micro-interaction). */
@@ -66,6 +68,11 @@ export function Contact() {
             scrollTrigger: { trigger: "[data-closing]", start: "top bottom", end: "bottom bottom", scrub: 0.8 },
           }
         );
+        gsap.fromTo("[data-nataraja]", { yPercent: -6 }, {
+          yPercent: 6,
+          ease: "none",
+          scrollTrigger: { trigger: ref.current, start: "top bottom", end: "bottom top", scrub: true },
+        });
         gsap.fromTo("[data-closing]", { columnGap: "0em" }, {
           columnGap: "0.035em",
           ease: "none",
@@ -80,6 +87,16 @@ export function Contact() {
   return (
     <footer ref={ref} id="contact" className="relative overflow-hidden bg-forest text-ivory">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_0%,rgba(177,139,82,0.16),transparent_55%)]" />
+
+      {/* Nataraja & salangai — black-and-white, tinted into the forest green,
+          fading out to the left so the text stays clear */}
+      <div
+        data-nataraja
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-0 h-[70%] w-full opacity-[0.16] mix-blend-luminosity md:h-full md:w-[48%] md:opacity-45 [mask-image:linear-gradient(to_bottom,black_55%,transparent)] md:[mask-image:linear-gradient(to_right,transparent,black_45%),linear-gradient(to_bottom,black_70%,transparent)] md:[mask-composite:intersect]"
+      >
+        <Media asset={media.contact} alt="" sizes="(min-width: 768px) 48vw, 100vw" />
+      </div>
 
       <div className="container-edge relative pt-28 md:pt-44">
         <SectionLabel index="06" label={t.contact.label} className="mb-10" />
