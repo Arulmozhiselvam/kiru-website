@@ -61,6 +61,8 @@ const anniversary = kiru("anniversary", 1178, 620, "50% 35%");
 const spotlight = kiru("spotlight", 1178, 1224, "50% 60%");
 // IMG_6306 — receiving a certificate on stage
 const ceremony = kiru("ceremony", 1178, 1084, "50% 40%");
+// WhatsApp 2026-11-17 — feet in motion: salangai, alta, fanned pleats
+const salangai = kiru("salangai", 1065, 810, "50% 80%");
 
 export const media = {
   // Home banner: IMG_6297, at the carved wooden doorway
@@ -69,8 +71,8 @@ export const media = {
   heroVideo: null as string | null,
   // About section ("A life told in rhythm & grace"): IMG_6293
   portrait: { ...expressive, position: "55% 22%" },
-  // Arangetram background: the spotlit night stage (IMG_6305)
-  arangetram: spotlight,
+  // Arangetram background: feet, salangai and pleats on a dark stage
+  arangetram: salangai,
   art: {
     // Expression (Abhinaya): IMG_6301, with a live flautist
     abhinaya: { ...musician, position: "50% 22%" },
@@ -83,6 +85,6 @@ export const media = {
   journey: [null, ceremony, shivarpanam, tableau, null] as (MediaAsset | null)[],
   gallery: [
     musician, stage, shivarpanam, tableau, hall2, anniversary, about,
-    certificate, ceremony, costume, spotlight, pose, hall1, expressive,
+    certificate, ceremony, costume, spotlight, pose, hall1, expressive, salangai,
   ],
 } as const;

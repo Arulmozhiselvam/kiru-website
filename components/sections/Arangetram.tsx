@@ -39,7 +39,7 @@ export function Arangetram() {
 
   return (
     <section ref={ref} id="arangetram" className="relative flex min-h-[100svh] items-center overflow-hidden bg-ink py-32 text-ivory">
-      <div data-bg className="absolute inset-0 will-change-transform">
+      <div data-bg className="absolute inset-x-0 -inset-y-[14%] will-change-transform">
         <Media asset={media.arangetram} alt="" sizes="100vw" />
       </div>
       <div aria-hidden className="absolute inset-0 bg-ink/45" />
