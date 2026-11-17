@@ -33,7 +33,7 @@ function MagneticEmail() {
         y.set((e.clientY - r.top - r.height / 2) * 0.25);
       }}
       onPointerLeave={() => { x.set(0); y.set(0); }}
-      className="group inline-flex items-center gap-4 font-display text-[clamp(1.2rem,5.4vw,4.75rem)] font-light leading-none text-ivory transition-colors duration-500 hover:text-gold-soft"
+      className="group inline-flex items-center gap-4 font-sans text-[clamp(1.05rem,4.6vw,3.6rem)] font-light leading-none tracking-[-0.01em] [font-variant-numeric:lining-nums] text-ivory transition-colors duration-500 hover:text-gold-soft"
     >
       <span className="relative whitespace-nowrap">
         {site.email}
