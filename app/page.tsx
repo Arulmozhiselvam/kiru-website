@@ -13,7 +13,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: site.name,
-  alternateName: site.brand,
+  alternateName: "கிருத்திகா ரமேஷ்",
   url: site.siteUrl,
   jobTitle: "Bharatanatyam Artist",
   homeLocation: { "@type": "Country", name: site.location },

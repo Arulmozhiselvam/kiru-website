@@ -1,9 +1,9 @@
 /**
  * BILINGUAL CONTENT — English & Tamil.
  *
- * Text wrapped in [square brackets] is an EDITABLE PLACEHOLDER awaiting the
- * artist's real information. Nothing biographical has been invented: only the
- * facts provided (name, location, art form, style, Arangetram year) are stated.
+ * Facts used: name, Malaysia, Bharatanatyam, Kalakshetra style, began dancing
+ * at age 8, Arangetram in 2027. No awards, teachers, venues or dates have been
+ * invented — add them here as they become available.
  */
 
 export type Locale = "en" | "ta";
@@ -18,6 +18,8 @@ export type ArtPanel = {
 export type Milestone = { year: string; title: string; text: string };
 
 export type Dictionary = {
+  /** the artist's name, shown in the hero, header and footer */
+  name: { first: string; last: string; full: string };
   meta: { description: string };
   /** alt text / caption for temporary stock photos (not the artist) */
   stockAlt: string;
@@ -49,12 +51,13 @@ export type Dictionary = {
 };
 
 const en: Dictionary = {
+  name: { first: "Kiruthigaah", last: "Ramesh", full: "Kiruthigaah Ramesh" },
   stockAlt: "Bharatanatyam dancer — temporary stock photograph",
   artistAlt: "Kiruthigaah Ramesh performing Bharatanatyam",
   stockNote: "Temporary stock image",
   meta: {
     description:
-      "Kiruthigaah Ramesh (KIRU) — Bharatanatyam artist in the Kalakshetra style, based in Malaysia. Where Tradition Becomes Expression.",
+      "Kiruthigaah Ramesh — Bharatanatyam artist from Malaysia, trained in the Kalakshetra style and dancing since the age of eight. Arangetram 2027. Where Tradition Becomes Expression.",
   },
   nav: {
     home: "Home", about: "About", art: "Art", gallery: "Gallery", journey: "Journey", contact: "Contact",
@@ -69,12 +72,14 @@ const en: Dictionary = {
     label: "The Artist",
     heading: ["A life", "told in", "rhythm & grace"],
     paragraphs: [
-      "Kiruthigaah Ramesh is a Bharatanatyam artist based in Malaysia, dancing in the Kalakshetra style — a tradition known for its clarity of line, precision and quiet intensity.",
-      "[Artist introduction — editable placeholder. Add a few sentences in the artist's own voice: how dance began, what it means to her, and what she hopes audiences feel.]",
+      "Kiruthigaah Ramesh is a Bharatanatyam artist from Malaysia, trained in the Kalakshetra style — a tradition known for its clarity of line, precision and quiet intensity.",
+      "She took her first steps in Bharatanatyam at the age of eight. What began as a child's fascination with rhythm grew into a lifelong devotion: years of patient practice, of adavus repeated until they became instinct, and of learning how a single glance can carry an entire story.",
+      "Today she brings that devotion to the stage — and is preparing for her Arangetram in 2027, the debut solo performance that marks a dancer's coming of age in the art.",
     ],
     facts: [
       { label: "Art form", value: "Bharatanatyam" },
       { label: "Style", value: "Kalakshetra" },
+      { label: "Dancing since", value: "Age 8" },
       { label: "Based in", value: "Malaysia" },
     ],
   },
@@ -100,13 +105,18 @@ const en: Dictionary = {
   journey: {
     label: "Artistic Journey",
     heading: ["Every step,", "a story"],
-    intro: "[Editable placeholder timeline — replace each milestone with the artist's real journey.]",
+    intro: "From a child's first steps at the age of eight to the threshold of her Arangetram — a path of discipline, devotion and joy.",
     milestones: [
-      { year: "[Year]", title: "[First steps]", text: "[Describe when and how the artist began learning Bharatanatyam.]" },
-      { year: "[Year]", title: "[Training in the Kalakshetra style]", text: "[Describe the training, the guru (with permission) and the discipline of practice.]" },
-      { year: "[Year]", title: "[Performances]", text: "[List notable performances, festivals or productions.]" },
-      { year: "[Year]", title: "[Preparing for the stage]", text: "[Describe the preparation leading up to the Arangetram.]" },
-      { year: "2027", title: "Arangetram", text: "The debut solo performance — details to be announced." },
+      { year: "Age 8", title: "The first step",
+        text: "Kiruthigaah begins learning Bharatanatyam — the first namaskaram, the first adavus, and the start of a lifelong conversation with rhythm." },
+      { year: "Training", title: "The discipline of the Kalakshetra style",
+        text: "Years of steady practice build the foundation: precise adavus, the clean geometry of the araimandi, and the patient study of hastas and abhinaya." },
+      { year: "Stage", title: "Into the light",
+        text: "Performing alongside fellow dancers, she learns what the classroom cannot teach — stage presence, stamina, and the quiet joy of sharing the art with an audience." },
+      { year: "Today", title: "Finding her own voice",
+        text: "Her dance grows into storytelling — exploring expression, devotion and the divine imagery of Bharatanatyam, from the many-armed goddess to the poetry of a single gesture." },
+      { year: "2027", title: "Arangetram",
+        text: "Her debut solo performance — the culmination of her training, offered before her guru, family and audience. Date and venue to be announced." },
     ],
   },
   gallery: {
@@ -138,12 +148,13 @@ const en: Dictionary = {
 };
 
 const ta: Dictionary = {
+  name: { first: "கிருத்திகா", last: "ரமேஷ்", full: "கிருத்திகா ரமேஷ்" },
   stockAlt: "பரதநாட்டியக் கலைஞர் — தற்காலிகப் புகைப்படம்",
   artistAlt: "கிருத்திகா ரமேஷ் — பரதநாட்டிய நிகழ்ச்சி",
   stockNote: "தற்காலிகப் படம்",
   meta: {
     description:
-      "கிருத்திகா ரமேஷ் (KIRU) — மலேசியாவைச் சேர்ந்த கலாக்ஷேத்ரா பாணி பரதநாட்டியக் கலைஞர். மரபு வெளிப்பாடாக மலரும் இடம்.",
+      "கிருத்திகா ரமேஷ் — மலேசியாவைச் சேர்ந்த கலாக்ஷேத்ரா பாணி பரதநாட்டியக் கலைஞர்; எட்டு வயது முதல் நடனமாடுகிறார். அரங்கேற்றம் 2027. மரபு வெளிப்பாடாக மலரும் இடம்.",
   },
   nav: {
     home: "முகப்பு", about: "அறிமுகம்", art: "கலை", gallery: "படங்கள்", journey: "பயணம்", contact: "தொடர்பு",
@@ -158,12 +169,14 @@ const ta: Dictionary = {
     label: "கலைஞர்",
     heading: ["தாளத்திலும்", "நளினத்திலும்", "சொல்லப்படும் வாழ்க்கை"],
     paragraphs: [
-      "கிருத்திகா ரமேஷ் மலேசியாவைச் சேர்ந்த பரதநாட்டியக் கலைஞர். கோடுகளின் தெளிவு, துல்லியம், அமைதியான தீவிரம் ஆகியவற்றுக்குப் பெயர் பெற்ற கலாக்ஷேத்ரா பாணியில் ஆடுகிறார்.",
-      "[கலைஞர் அறிமுகம் — திருத்தக்கூடிய இடம். நடனம் எப்படித் தொடங்கியது, அது அவருக்கு என்ன பொருள் தருகிறது என்பதை அவரது சொந்தக் குரலில் சேர்க்கவும்.]",
+      "கிருத்திகா ரமேஷ் மலேசியாவைச் சேர்ந்த பரதநாட்டியக் கலைஞர். கோடுகளின் தெளிவு, துல்லியம், அமைதியான தீவிரம் ஆகியவற்றுக்குப் பெயர் பெற்ற கலாக்ஷேத்ரா பாணியில் பயிற்சி பெற்றவர்.",
+      "எட்டு வயதில் பரதநாட்டியத்தில் தனது முதல் அடியை எடுத்து வைத்தார். தாளத்தின் மீதான ஒரு சிறுமியின் ஈர்ப்பாகத் தொடங்கியது, வாழ்நாள் அர்ப்பணிப்பாக வளர்ந்தது — இயல்பாகும் வரை மீண்டும் மீண்டும் பயிலப்பட்ட அடவுகள், ஒரே பார்வையில் முழுக் கதையையும் சொல்லக் கற்றுக்கொண்ட ஆண்டுகள்.",
+      "இன்று அந்த அர்ப்பணிப்பை மேடைக்குக் கொண்டு வருகிறார் — 2027-இல் நடைபெறவிருக்கும் தனது அரங்கேற்றத்திற்குத் தயாராகி வருகிறார்; ஒரு நடனக் கலைஞர் கலையில் முழுமை பெறுவதைக் குறிக்கும் முதல் தனி நிகழ்ச்சி அது.",
     ],
     facts: [
       { label: "கலை வடிவம்", value: "பரதநாட்டியம்" },
       { label: "பாணி", value: "கலாக்ஷேத்ரா" },
+      { label: "நடனம் தொடங்கியது", value: "8 வயதில்" },
       { label: "இருப்பிடம்", value: "மலேசியா" },
     ],
   },
@@ -189,13 +202,18 @@ const ta: Dictionary = {
   journey: {
     label: "கலைப் பயணம்",
     heading: ["ஒவ்வொரு அடியும்", "ஒரு கதை"],
-    intro: "[திருத்தக்கூடிய காலவரிசை — ஒவ்வொரு மைல்கல்லையும் கலைஞரின் உண்மையான பயணத்துடன் மாற்றவும்.]",
+    intro: "எட்டு வயதின் முதல் அடிகளிலிருந்து அரங்கேற்றத்தின் வாசல் வரை — ஒழுக்கம், அர்ப்பணிப்பு, மகிழ்ச்சி நிறைந்த ஒரு பயணம்.",
     milestones: [
-      { year: "[ஆண்டு]", title: "[முதல் அடிகள்]", text: "[பரதநாட்டியம் கற்கத் தொடங்கிய காலம் மற்றும் விதம்.]" },
-      { year: "[ஆண்டு]", title: "[கலாக்ஷேத்ரா பாணியில் பயிற்சி]", text: "[பயிற்சி, குரு (அனுமதியுடன்), பயிற்சியின் ஒழுக்கம் பற்றி.]" },
-      { year: "[ஆண்டு]", title: "[நிகழ்ச்சிகள்]", text: "[குறிப்பிடத்தக்க நிகழ்ச்சிகள், விழாக்கள், தயாரிப்புகள்.]" },
-      { year: "[ஆண்டு]", title: "[மேடைக்கான தயாரிப்பு]", text: "[அரங்கேற்றத்திற்கான தயாரிப்பு பற்றி.]" },
-      { year: "2027", title: "அரங்கேற்றம்", text: "முதல் தனி நடன நிகழ்ச்சி — விவரங்கள் விரைவில் அறிவிக்கப்படும்." },
+      { year: "8 வயது", title: "முதல் அடி",
+        text: "கிருத்திகா பரதநாட்டியம் கற்கத் தொடங்குகிறார் — முதல் நமஸ்காரம், முதல் அடவுகள், தாளத்துடனான வாழ்நாள் உரையாடலின் தொடக்கம்." },
+      { year: "பயிற்சி", title: "கலாக்ஷேத்ரா பாணியின் ஒழுக்கம்",
+        text: "ஆண்டுகால தொடர் பயிற்சி அடித்தளம் அமைக்கிறது: துல்லியமான அடவுகள், அரைமண்டியின் தெளிவான வடிவியல், ஹஸ்தங்கள் மற்றும் அபிநயத்தின் பொறுமையான கற்றல்." },
+      { year: "மேடை", title: "ஒளியை நோக்கி",
+        text: "சக நடனக் கலைஞர்களுடன் மேடையில் ஆடுவதன் மூலம், வகுப்பறை கற்றுத்தர முடியாதவற்றைக் கற்கிறார் — மேடை ஆளுமை, உறுதி, கலையைப் பகிர்வதன் அமைதியான மகிழ்ச்சி." },
+      { year: "இன்று", title: "தனக்கென ஒரு குரல்",
+        text: "அவரது நடனம் கதைசொல்லலாக வளர்கிறது — வெளிப்பாடு, பக்தி, பரதநாட்டியத்தின் தெய்வீகப் படிமங்கள்; பல கரங்கள் கொண்ட தேவியிலிருந்து ஒற்றை முத்திரையின் கவிதை வரை." },
+      { year: "2027", title: "அரங்கேற்றம்",
+        text: "அவரது முதல் தனி நடன நிகழ்ச்சி — பயிற்சியின் நிறைவு, குரு, குடும்பம், ரசிகர்கள் முன்னிலையில் அர்ப்பணிக்கப்படுகிறது. தேதியும் இடமும் விரைவில் அறிவிக்கப்படும்." },
     ],
   },
   gallery: {

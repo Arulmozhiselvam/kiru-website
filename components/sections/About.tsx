@@ -51,7 +51,7 @@ export function About() {
             <Media asset={media.portrait} alt={media.portrait.stock ? t.stockAlt : t.artistAlt} sizes="(min-width: 1024px) 40vw, 100vw" />
           </ImageReveal>
           <p className="eyebrow mt-5 flex items-center justify-between text-charcoal/50">
-            <span>{media.portrait.stock ? t.stockNote : "Kiruthigaah Ramesh"}</span>
+            <span>{media.portrait.stock ? t.stockNote : t.name.full}</span>
             <span>{t.about.facts[2].value}</span>
           </p>
         </div>

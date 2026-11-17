@@ -13,6 +13,7 @@ import { LanguageSwitch } from "@/components/ui/LanguageSwitch";
 import { SocialIcon } from "@/components/ui/SocialIcon";
 import { DrawLine } from "@/components/ui/DrawLine";
 import { site } from "@/content/site";
+import { graphemes } from "@/lib/segment";
 
 /** Email link that leans toward the pointer (desktop micro-interaction). */
 function MagneticEmail() {
@@ -32,9 +33,9 @@ function MagneticEmail() {
         y.set((e.clientY - r.top - r.height / 2) * 0.25);
       }}
       onPointerLeave={() => { x.set(0); y.set(0); }}
-      className="group inline-flex items-center gap-4 font-display text-[clamp(1.9rem,5.5vw,4.75rem)] font-light leading-none text-ivory transition-colors duration-500 hover:text-gold-soft"
+      className="group inline-flex items-center gap-4 font-display text-[clamp(1.2rem,5.4vw,4.75rem)] font-light leading-none text-ivory transition-colors duration-500 hover:text-gold-soft"
     >
-      <span className="relative break-all">
+      <span className="relative whitespace-nowrap">
         {site.email}
         <span className="absolute -bottom-2 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-700 ease-[var(--ease-cinematic)] group-hover:scale-x-100" />
       </span>
@@ -48,7 +49,7 @@ export function Contact() {
   const { t, locale } = useLanguage();
   const { scrollTo } = useSmoothScroll();
 
-  // Closing animation: the KIRU wordmark rises and breathes apart.
+  // Closing animation: her name rises letter by letter and breathes apart.
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
@@ -65,15 +66,15 @@ export function Contact() {
             scrollTrigger: { trigger: "[data-closing]", start: "top bottom", end: "bottom bottom", scrub: 0.8 },
           }
         );
-        gsap.fromTo("[data-closing]", { columnGap: "0.01em" }, {
-          columnGap: "0.09em",
+        gsap.fromTo("[data-closing]", { columnGap: "0em" }, {
+          columnGap: "0.035em",
           ease: "none",
           scrollTrigger: { trigger: "[data-closing]", start: "top bottom", end: "bottom bottom", scrub: 0.8 },
         });
       });
       return () => mm.revert();
     },
-    { scope: ref }
+    { scope: ref, dependencies: [locale], revertOnUpdate: true }
   );
 
   return (
@@ -145,12 +146,12 @@ export function Contact() {
         <p
           data-closing
           aria-hidden
-          className="flex select-none justify-center gap-[0.04em] whitespace-nowrap font-display text-[24vw] font-light leading-[0.8] md:text-[22vw]"
+          className="flex select-none justify-center whitespace-nowrap font-display text-[17vw] font-light leading-[1.15] md:text-[15.5vw]"
         >
-          {"KIRU".split("").map((c, i) => (
+          {graphemes(t.name.first).map((c, i) => (
             <span
               key={i}
-              className="inline-block bg-gradient-to-b from-gold/45 via-gold/20 to-gold/0 bg-clip-text pb-[0.04em] text-transparent"
+              className="inline-block bg-gradient-to-b from-gold/45 via-gold/20 to-gold/0 bg-clip-text pb-[0.14em] text-transparent"
             >
               {c}
             </span>
@@ -160,7 +161,7 @@ export function Contact() {
 
       <div className="container-edge relative grid gap-4 border-t border-ivory/10 py-7 text-xs text-ivory/45 md:grid-cols-[1fr_auto] md:items-center md:gap-8">
         <div className="space-y-1.5">
-          <p>© {new Date().getFullYear()} {site.name}. {t.contact.rights}</p>
+          <p>© {new Date().getFullYear()} {t.name.full}. {t.contact.rights}</p>
         </div>
         <button
           type="button"

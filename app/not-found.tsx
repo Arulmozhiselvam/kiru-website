@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/ui/BrandMark";
+import { site } from "@/content/site";
 
 export default function NotFound() {
   return (
     <main className="flex min-h-[100svh] flex-col items-center justify-center gap-8 bg-ink px-6 text-center text-ivory">
-      <BrandMark />
+      <BrandMark label={site.name} />
       <h1 className="display-lg">
         Lost in <span className="italic text-gold-soft">rhythm</span>
       </h1>

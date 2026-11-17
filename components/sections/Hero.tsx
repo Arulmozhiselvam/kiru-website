@@ -14,7 +14,7 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
   const { introDone } = useIntro();
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const { scrollTo } = useSmoothScroll();
   const portrait = media.hero.height > media.hero.width;
 
@@ -29,7 +29,6 @@ export function Hero() {
           .timeline({ paused: true })
           .fromTo(q("[data-bg]"), { scale: 1.3 }, { scale: 1.08, duration: 3.2, ease: "expo.out" }, 0)
           .fromTo(q("[data-veil]"), { opacity: 1 }, { opacity: 0, duration: 2, ease: "power2.out" }, 0)
-          .fromTo(q("[data-char]"), { yPercent: 115 }, { yPercent: 0, duration: 1.5, ease: "expo.out", stagger: 0.035 }, 0.6)
           .fromTo(q("[data-tag]"), { yPercent: 110 }, { yPercent: 0, duration: 1.4, ease: "expo.out" }, 1.3)
           .fromTo(q("[data-rule]"), { scaleX: 0 }, { scaleX: 1, duration: 1.6, ease: "expo.inOut" }, 1.1)
           .fromTo(q("[data-fade]"), { opacity: 0 }, { opacity: 1, duration: 1.4, stagger: 0.15 }, 1.6);
@@ -49,12 +48,30 @@ export function Hero() {
     { scope: ref }
   );
 
+  // The name has its own entrance so it can replay when the language changes
+  // (English ↔ Tamil). Hidden until the intro curtain lifts.
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add(MQ.motion, () => {
+        const chars = ref.current!.querySelectorAll("[data-char]");
+        if (!introDone) {
+          gsap.set(chars, { yPercent: 115 });
+          return;
+        }
+        gsap.fromTo(chars, { yPercent: 115 }, { yPercent: 0, duration: 1.5, ease: "expo.out", stagger: 0.035, delay: 0.6 });
+      });
+      return () => mm.revert();
+    },
+    { scope: ref, dependencies: [locale, introDone], revertOnUpdate: true }
+  );
+
   useEffect(() => {
     if (introDone) tl.current?.play();
   }, [introDone]);
 
   return (
-    <section ref={ref} id="home" aria-label={site.name} className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-ink">
+    <section ref={ref} id="home" aria-label={t.name.full} className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-ink">
       {/* Background: image (or optional video) with parallax + drift */}
       <div data-parallax className="absolute inset-0 will-change-transform">
         <div data-bg className="absolute inset-0 will-change-transform">
@@ -97,9 +114,9 @@ export function Hero() {
       {/* Copy */}
       <div data-copy className="container-edge relative flex h-full flex-col justify-end pb-24 pt-28 md:pb-28 md:pt-32">
         <h1 className="display-xl text-ivory [text-shadow:0_2px_24px_rgba(16,19,15,0.55),0_1px_3px_rgba(16,19,15,0.4)]">
-          <SplitChars text="Kiruthigaah" className="block" />
+          <SplitChars key={`f-${locale}`} text={t.name.first} className="block" />
           <span className="flex flex-wrap items-baseline gap-x-[0.25em]">
-            <SplitChars text="Ramesh" className="block italic text-gold-soft" />
+            <SplitChars key={`l-${locale}`} text={t.name.last} className="block italic text-gold-soft" />
           </span>
         </h1>
 

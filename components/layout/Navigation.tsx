@@ -84,8 +84,8 @@ export function Navigation() {
           )}
         />
         <nav aria-label="Primary" className="container-edge relative flex h-20 items-center justify-between md:h-24">
-          <a href="#home" onClick={go("home")} className="relative z-10 text-ivory" aria-label="KIRU — home">
-            <BrandMark />
+          <a href="#home" onClick={go("home")} className="relative z-10 text-ivory" aria-label={`${t.name.full} — ${t.nav.home}`}>
+            <BrandMark label={t.name.full} />
           </a>
 
           <ul className="hidden items-center gap-9 lg:flex">
@@ -113,7 +113,7 @@ export function Navigation() {
           </ul>
 
           <div className="relative z-10 flex items-center gap-3">
-            <LanguageSwitch className="hidden sm:inline-flex" id="nav-lang" />
+            <LanguageSwitch className="max-sm:hidden" id="nav-lang" />
             <button
               type="button"
               onClick={() => setOpen((o) => !o)}

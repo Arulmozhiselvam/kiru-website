@@ -4,7 +4,6 @@
  */
 export const site = {
   name: "Kiruthigaah Ramesh",
-  brand: "KIRU",
   location: "Malaysia",
   /** Production URL — used for SEO, sitemap and Open Graph */
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.example.com",

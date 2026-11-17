@@ -194,13 +194,23 @@ html[lang="ta"] .display-lg,
 html[lang="ta"] .display-md {
   overflow-wrap: anywhere;
 }
-/* Tamil has no true italic — avoid synthetic slanting (except the English name) */
-html[lang="ta"] .italic:not(h1 *) {
+/* Tamil has no true italic — avoid synthetic slanting */
+html[lang="ta"] .italic {
   font-style: normal;
 }
-/* Keep the English name in the hero display serif in both languages */
+html[lang="ta"] .brand-name {
+  font-family: var(--font-tamil);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1rem;
+}
+/* Tamil hero name: Tamil glyphs are wide and tall — scale down */
 html[lang="ta"] h1.display-xl {
-  font-family: var(--font-display);
+  font-family: var(--font-tamil);
+  font-weight: 400;
+  font-size: clamp(3rem, 8.2vw, 8rem);
+  line-height: 1.18;
+  letter-spacing: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

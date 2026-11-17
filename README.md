@@ -1,4 +1,4 @@
-# KIRU — Kiruthigaah Ramesh · Bharatanatyam Portfolio
+# Kiruthigaah Ramesh · Bharatanatyam Portfolio
 
 A cinematic single-page portfolio built with Next.js (App Router), React, TypeScript,
 Tailwind CSS v4, GSAP + ScrollTrigger, Motion for React, Lenis smooth scrolling and Lucide icons.
@@ -46,12 +46,12 @@ Put the real files in `public/images/` (JPG/WebP, ~2400px on the long edge) and 
 - `siteUrl` — production domain (or set `NEXT_PUBLIC_SITE_URL`); used for SEO, sitemap, OG
 
 ### 3. Text — `content/dictionary.ts` (English + Tamil)
-Anything in **[square brackets]** is an editable placeholder:
-- `about.paragraphs[1]` — the artist's own introduction
-- `journey.milestones` — years, titles and descriptions (only "Arangetram 2027" is factual)
-
-Nothing biographical was invented: only the name, Malaysia, Bharatanatyam, Kalakshetra style
-and Arangetram 2027 are stated. **Please have a native speaker review the Tamil**, including
+The About introduction and Journey timeline are written from the confirmed facts: name,
+Malaysia, Bharatanatyam, Kalakshetra style, began dancing at age 8, Arangetram in 2027.
+Journey stages use labels (Age 8 · Training · Stage · Today · 2027) rather than invented years.
+No awards, teachers, venues or dates were invented — add real ones in `journey.milestones`
+and `about.paragraphs` as they become available. The artist's name is localised via `name`
+(English: Kiruthigaah Ramesh · Tamil: கிருத்திகா ரமேஷ்). **Please have a native speaker review the Tamil**, including
 the Tamil spelling of the artist's name (கிருத்திகா ரமேஷ்) used in the Tamil copy.
 
 ### 4. Open Graph image
@@ -78,7 +78,7 @@ scripts/             generate-placeholders.mjs  (npm run placeholders)
 ```
 
 ## Motion system
-- **Intro** — gold particle canvas, KIRU letter reveal, curtain lift; once per session; skippable.
+- **Intro** — gold particle canvas, her name revealed letter by letter (English + Tamil), curtain lift; once per session; skippable.
 - **Hero** — slow zoom-in, continuous drift, letter-by-letter name, masked tagline, scroll-out parallax.
 - **About** — ink→ivory background transition, clip-path portrait reveal, masked heading lines.
 - **Art** — pinned horizontal storytelling on desktop (≥1024px) with per-panel clip/parallax;
@@ -87,7 +87,7 @@ scripts/             generate-placeholders.mjs  (npm run placeholders)
 - **Gallery** — asymmetric grid, curtain reveals, depth drift, hover zoom, full-screen lightbox
   (keyboard ←/→/Esc, swipe, focus trap).
 - **Arangetram** — stage image glows through the "2027" numerals (text mask).
-- **Footer** — magnetic email link, KIRU wordmark rises as a closing gesture.
+- **Footer** — magnetic email link, her first name rises letter by letter as a closing gesture.
 - Custom cursor only on fine-pointer devices.
 
 All GSAP animations are registered inside `gsap.matchMedia()`; with

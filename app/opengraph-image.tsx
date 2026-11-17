@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "KIRU — Kiruthigaah Ramesh, Bharatanatyam Artist";
+export const alt = "Kiruthigaah Ramesh — Bharatanatyam Artist, Malaysia";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -17,9 +17,9 @@ export default function OpengraphImage() {
           color: "#EEE8DC", fontFamily: "serif",
         }}
       >
-        <div style={{ fontSize: 150, letterSpacing: 40, paddingLeft: 40, fontWeight: 300 }}>KIRU</div>
-        <div style={{ width: 220, height: 1, background: "#B18B52", margin: "26px 0 30px" }} />
-        <div style={{ fontSize: 40, fontStyle: "italic" }}>Kiruthigaah Ramesh</div>
+        <div style={{ fontSize: 108, fontWeight: 300, lineHeight: 1 }}>Kiruthigaah</div>
+        <div style={{ fontSize: 108, fontWeight: 300, fontStyle: "italic", color: "#CDB083", lineHeight: 1.1 }}>Ramesh</div>
+        <div style={{ width: 220, height: 1, background: "#B18B52", margin: "26px 0 6px" }} />
         <div style={{ fontSize: 20, letterSpacing: 8, color: "#B18B52", marginTop: 22, textTransform: "uppercase" }}>
           Bharatanatyam · Malaysia
         </div>

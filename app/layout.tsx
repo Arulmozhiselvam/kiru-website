@@ -25,21 +25,21 @@ const notoTamil = Noto_Sans_Tamil({
   preload: false,
 });
 
-const title = `${site.name} — Bharatanatyam Artist | ${site.brand}`;
+const title = `${site.name} — Bharatanatyam Artist, Malaysia`;
 const description = dictionaries.en.meta.description;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.siteUrl),
-  title: { default: title, template: `%s | ${site.brand}` },
+  title: { default: title, template: `%s | ${site.name}` },
   description,
-  applicationName: site.brand,
+  applicationName: site.name,
   authors: [{ name: site.name }],
-  keywords: ["Bharatanatyam", "Kalakshetra style", "Indian classical dance", "Malaysia", "Kiruthigaah Ramesh", "KIRU", "Arangetram 2027", "பரதநாட்டியம்"],
+  keywords: ["Bharatanatyam", "Kalakshetra style", "Indian classical dance", "Malaysia", "Kiruthigaah Ramesh", "கிருத்திகா ரமேஷ்", "Arangetram 2027", "பரதநாட்டியம்"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
-    siteName: site.brand,
+    siteName: site.name,
     title,
     description,
     locale: "en_MY",
