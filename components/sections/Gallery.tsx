@@ -20,6 +20,16 @@ const LAYOUT = [
   "col-span-5 col-start-2 md:col-span-4 md:col-start-8 md:mt-32",
 ];
 
+/** Wide (landscape) photos get a broad frame, alternating sides. */
+const WIDE = [
+  "col-span-6 md:col-span-7 md:col-start-1 md:mt-12",
+  "col-span-6 md:col-span-7 md:col-start-6 md:mt-12",
+];
+
+function slot(asset: { width: number; height: number }, i: number, wideIndex: number) {
+  return asset.width > asset.height ? WIDE[wideIndex % WIDE.length] : LAYOUT[i % LAYOUT.length];
+}
+
 export function Gallery() {
   const ref = useRef<HTMLElement>(null);
   const { t, locale } = useLanguage();
@@ -57,6 +67,8 @@ export function Gallery() {
   );
 
   const n = media.gallery.length;
+  // running count of wide photos, so wide frames alternate left/right
+  const wideBefore = media.gallery.map((_, i) => media.gallery.slice(0, i).filter((a) => a.width > a.height).length);
   const alts = media.gallery.map((a, i) => (a.stock ? t.gallery.alts[i] : `${t.artistAlt} — ${i + 1}`));
 
   return (
@@ -81,7 +93,7 @@ export function Gallery() {
 
         <ul className="mt-20 grid grid-cols-6 gap-x-4 gap-y-10 md:mt-28 md:grid-cols-12 md:gap-x-6 md:gap-y-16">
           {media.gallery.map((asset, i) => (
-            <li key={asset.src} data-item style={{ aspectRatio: frameRatio(asset, 0.58, 0.8) }} className={cn("relative self-start", LAYOUT[i % LAYOUT.length])}>
+            <li key={asset.src} data-item style={{ aspectRatio: frameRatio(asset, 0.58, 2.4) }} className={cn("relative self-start", slot(asset, i, wideBefore[i]))}>
               <button
                 type="button"
                 data-cursor={locale === "ta" ? "பார்" : "View"}

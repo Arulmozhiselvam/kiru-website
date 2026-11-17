@@ -42,7 +42,7 @@ export function Arangetram() {
       <div data-bg className="absolute inset-0 will-change-transform">
         <Media asset={media.arangetram} alt="" sizes="100vw" />
       </div>
-      <div aria-hidden className="absolute inset-0 bg-ink/70" />
+      <div aria-hidden className="absolute inset-0 bg-ink/45" />
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_10%,rgba(16,19,15,0.9)_75%)]" />
 
       <div className="container-edge relative flex flex-col items-center text-center">

@@ -6,6 +6,9 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import { RevealLines } from "@/components/ui/RevealLines";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { cn } from "@/lib/cn";
+import { ImageReveal } from "@/components/ui/ImageReveal";
+import { Media } from "@/components/ui/Media";
+import { frameRatio, media } from "@/content/media";
 
 /** Editorial timeline with a gold thread that draws itself as you scroll. */
 export function Journey() {
@@ -83,6 +86,24 @@ export function Journey() {
                     {m.text}
                   </p>
                 </div>
+
+                {media.journey[i] && (
+                  <div
+                    className={cn(
+                      "mt-8 md:mt-0 md:px-16 md:row-start-1",
+                      right ? "md:col-start-1" : "md:col-start-2"
+                    )}
+                  >
+                    <ImageReveal
+                      from={right ? "left" : "right"}
+                      parallax={6}
+                      style={{ aspectRatio: frameRatio(media.journey[i]!, 0.7, 1.6) }}
+                      className={cn("w-full max-w-md", right && "md:ml-auto")}
+                    >
+                      <Media asset={media.journey[i]!} alt={`${m.title} — ${t.artistAlt}`} sizes="(min-width: 768px) 32vw, 90vw" />
+                    </ImageReveal>
+                  </div>
+                )}
               </li>
             );
           })}

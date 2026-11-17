@@ -2,7 +2,8 @@
  * BILINGUAL CONTENT — English & Tamil.
  *
  * Facts used: name, Malaysia, Bharatanatyam, Kalakshetra style, began dancing
- * at age 8, Arangetram in 2027. No awards, teachers, venues or dates have been
+ * at age 8, Shivarpanam (2024), International Cultural Day at HWUM
+ * (Feb 2026, from her photos), Arangetram in 2027. No awards, teachers, venues or dates have been
  * invented — add them here as they become available.
  */
 
@@ -112,9 +113,9 @@ const en: Dictionary = {
       { year: "Training", title: "The discipline of the Kalakshetra style",
         text: "Years of steady practice build the foundation: precise adavus, the clean geometry of the araimandi, and the patient study of hastas and abhinaya." },
       { year: "Stage", title: "Into the light",
-        text: "Performing alongside fellow dancers, she learns what the classroom cannot teach — stage presence, stamina, and the quiet joy of sharing the art with an audience." },
+        text: "Performing alongside fellow dancers — including the stage production Shivarpanam in 2024 — she learns what the classroom cannot teach: stage presence, stamina, and the quiet joy of sharing the art with an audience." },
       { year: "Today", title: "Finding her own voice",
-        text: "Her dance grows into storytelling — exploring expression, devotion and the divine imagery of Bharatanatyam, from the many-armed goddess to the poetry of a single gesture." },
+        text: "Her dance grows into storytelling — from the many-armed goddess to the poetry of a single gesture — and into solo performances such as International Cultural Day at HWUM in February 2026." },
       { year: "2027", title: "Arangetram",
         text: "Her debut solo performance — the culmination of her training, offered before her guru, family and audience. Date and venue to be announced." },
     ],
@@ -209,9 +210,9 @@ const ta: Dictionary = {
       { year: "பயிற்சி", title: "கலாக்ஷேத்ரா பாணியின் ஒழுக்கம்",
         text: "ஆண்டுகால தொடர் பயிற்சி அடித்தளம் அமைக்கிறது: துல்லியமான அடவுகள், அரைமண்டியின் தெளிவான வடிவியல், ஹஸ்தங்கள் மற்றும் அபிநயத்தின் பொறுமையான கற்றல்." },
       { year: "மேடை", title: "ஒளியை நோக்கி",
-        text: "சக நடனக் கலைஞர்களுடன் மேடையில் ஆடுவதன் மூலம், வகுப்பறை கற்றுத்தர முடியாதவற்றைக் கற்கிறார் — மேடை ஆளுமை, உறுதி, கலையைப் பகிர்வதன் அமைதியான மகிழ்ச்சி." },
+        text: "சக நடனக் கலைஞர்களுடன் மேடையில் ஆடுவதன் மூலம் — 2024-இல் நடைபெற்ற ‘சிவார்ப்பணம்’ தயாரிப்பு உட்பட — வகுப்பறை கற்றுத்தர முடியாதவற்றைக் கற்கிறார்: மேடை ஆளுமை, உறுதி, கலையைப் பகிர்வதன் அமைதியான மகிழ்ச்சி." },
       { year: "இன்று", title: "தனக்கென ஒரு குரல்",
-        text: "அவரது நடனம் கதைசொல்லலாக வளர்கிறது — வெளிப்பாடு, பக்தி, பரதநாட்டியத்தின் தெய்வீகப் படிமங்கள்; பல கரங்கள் கொண்ட தேவியிலிருந்து ஒற்றை முத்திரையின் கவிதை வரை." },
+        text: "அவரது நடனம் கதைசொல்லலாக வளர்கிறது — பல கரங்கள் கொண்ட தேவியிலிருந்து ஒற்றை முத்திரையின் கவிதை வரை — பிப்ரவரி 2026-இல் HWUM-இல் நடைபெற்ற சர்வதேச கலாச்சார தினம் போன்ற தனி நிகழ்ச்சிகளாகவும் மலர்கிறது." },
       { year: "2027", title: "அரங்கேற்றம்",
         text: "அவரது முதல் தனி நடன நிகழ்ச்சி — பயிற்சியின் நிறைவு, குரு, குடும்பம், ரசிகர்கள் முன்னிலையில் அர்ப்பணிக்கப்படுகிறது. தேதியும் இடமும் விரைவில் அறிவிக்கப்படும்." },
     ],

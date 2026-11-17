@@ -46,22 +46,43 @@ const tableau = kiru("gallery-02", 675, 1080, "50% 30%");
 const costume = kiru("gallery-03", 463, 1080, "50% 14%");
 // IMG_6298 — outdoor sculptural pose
 const pose = kiru("gallery-04", 960, 1280, "45% 72%");
+// IMG_6299 / 6300 — performing in a hall before a seated audience
+const hall1 = kiru("hall-01", 960, 1280, "45% 40%");
+const hall2 = kiru("hall-02", 960, 1280, "50% 40%");
+// IMG_6301 — on stage with a live flautist (cropped from a print)
+const musician = kiru("musician", 768, 1203, "50% 30%");
+// IMG_6302 — in costume, holding a certificate (cropped from a collage)
+const certificate = kiru("certificate-portrait", 679, 869, "50% 30%");
+// IMG_6303 — Shivarpanam (2024), red-lit stage production
+const shivarpanam = kiru("shivarpanam", 1177, 508, "50% 40%");
+// IMG_6304 — anniversary production, three dancers
+const anniversary = kiru("anniversary", 1178, 620, "50% 35%");
+// IMG_6305 — International Cultural Day, night stage under spotlights
+const spotlight = kiru("spotlight", 1178, 1224, "50% 60%");
+// IMG_6306 — receiving a certificate on stage
+const ceremony = kiru("ceremony", 1178, 1084, "50% 40%");
 
 export const media = {
-  // Home banner: IMG_6295, the multi-armed deity tableau
-  hero: { ...tableau, position: "50% 16%" },
+  // Home banner: IMG_6297, at the carved wooden doorway
+  hero: { ...about, position: "50% 30%" },
   /** e.g. "/video/hero.mp4" — muted, looping, ~6–10s, < 4 MB recommended */
   heroVideo: null as string | null,
   // About section ("A life told in rhythm & grace"): IMG_6293
   portrait: { ...expressive, position: "55% 22%" },
-  arangetram: { ...stage, position: "50% 30%" },
+  // Arangetram background: the spotlit night stage (IMG_6305)
+  arangetram: spotlight,
   art: {
-    // Expression (Abhinaya): IMG_6297, at the carved doorway
-    abhinaya: { ...about, position: "50% 35%" },
-    rhythm: stage,
-    mudra: tableau,
+    // Expression (Abhinaya): IMG_6301, with a live flautist
+    abhinaya: { ...musician, position: "50% 22%" },
+    rhythm: hall1,
+    mudra: { ...hall2, position: "55% 35%" },
     costume,
     aesthetics: pose,
   },
-  gallery: [stage, tableau, about, costume, pose, expressive],
+  /** Photos beside Journey milestones, by index (null = text only) */
+  journey: [null, ceremony, shivarpanam, tableau, null] as (MediaAsset | null)[],
+  gallery: [
+    musician, stage, shivarpanam, tableau, hall2, anniversary, about,
+    certificate, ceremony, costume, spotlight, pose, hall1, expressive,
+  ],
 } as const;
