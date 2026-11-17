@@ -33,7 +33,7 @@ export function RevealLines({ lines, as: Tag = "h2", className, lineClassName, d
             ease: "expo.out",
             stagger: 0.11,
             delay,
-            scrollTrigger: { trigger: ref.current, start, once: true },
+            scrollTrigger: { trigger: ref.current, start, toggleActions: "play none none none" },
           }
         );
       });

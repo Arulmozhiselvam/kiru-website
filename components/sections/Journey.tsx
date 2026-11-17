@@ -26,7 +26,7 @@ export function Journey() {
           }
         );
         gsap.utils.toArray<HTMLElement>("[data-milestone]").forEach((m) => {
-          const tl = gsap.timeline({ scrollTrigger: { trigger: m, start: "top 72%", once: true } });
+          const tl = gsap.timeline({ scrollTrigger: { trigger: m, start: "top 72%", toggleActions: "play none none none" } });
           tl.fromTo(m.querySelector("[data-node]"), { scale: 0 }, { scale: 1, duration: 0.8, ease: "back.out(2)" })
             .fromTo(m.querySelector("[data-year]"), { yPercent: 110 }, { yPercent: 0, duration: 1.2, ease: "expo.out" }, 0.05)
             .fromTo(m.querySelectorAll("[data-fade]"), { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, stagger: 0.1, ease: "expo.out" }, 0.2)

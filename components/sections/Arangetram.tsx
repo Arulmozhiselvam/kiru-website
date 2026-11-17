@@ -27,7 +27,7 @@ export function Arangetram() {
           scrollTrigger: { trigger: ref.current, start: "top bottom", end: "bottom top", scrub: true },
         });
 
-        const tl = gsap.timeline({ scrollTrigger: { trigger: ref.current, start: "top 55%", once: true } });
+        const tl = gsap.timeline({ scrollTrigger: { trigger: ref.current, start: "top 55%", toggleActions: "play none none none" } });
         tl.fromTo(q("[data-char]"), { yPercent: 115 }, { yPercent: 0, duration: 1.4, ease: "expo.out", stagger: 0.05 })
           .fromTo(q("[data-year]"), { clipPath: "inset(0% 50% 0% 50%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.8, ease: "expo.inOut" }, 0.2)
           .fromTo(q("[data-fade]"), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, stagger: 0.12, ease: "expo.out" }, 0.9);

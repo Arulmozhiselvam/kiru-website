@@ -32,7 +32,7 @@ export function Gallery() {
         gsap.utils.toArray<HTMLElement>("[data-item]").forEach((item, i) => {
           const frame = item.querySelector("[data-frame]");
           const img = item.querySelector("[data-img]");
-          const tl = gsap.timeline({ scrollTrigger: { trigger: item, start: "top 90%", once: true } });
+          const tl = gsap.timeline({ scrollTrigger: { trigger: item, start: "top 90%", toggleActions: "play none none none" } });
           tl.fromTo(frame, { clipPath: i % 2 ? "inset(0% 0% 100% 0%)" : "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.5, ease: "expo.inOut" })
             .fromTo(img, { scale: 1.4 }, { scale: 1, duration: 2, ease: "expo.out" }, 0.1)
             .fromTo(item.querySelector("[data-cap]"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1 }, 0.8);

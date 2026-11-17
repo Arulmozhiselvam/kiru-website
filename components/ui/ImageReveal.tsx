@@ -42,7 +42,7 @@ export function ImageReveal({ children, className, from = "bottom", parallax = 8
             duration: 1.6,
             ease: "expo.inOut",
             delay,
-            scrollTrigger: { trigger: ref.current, start: "top 88%", once: true },
+            scrollTrigger: { trigger: ref.current, start: "top 88%", toggleActions: "play none none none" },
           }
         );
         gsap.fromTo(inner, { scale: 1.35 }, {
@@ -50,7 +50,7 @@ export function ImageReveal({ children, className, from = "bottom", parallax = 8
           duration: 2.2,
           ease: "expo.out",
           delay,
-          scrollTrigger: { trigger: ref.current, start: "top 88%", once: true },
+          scrollTrigger: { trigger: ref.current, start: "top 88%", toggleActions: "play none none none" },
         });
         if (parallax) {
           gsap.fromTo(

@@ -19,7 +19,7 @@ export function DrawLine({ className, vertical = false, delay = 0 }: { className
             duration: 1.8,
             ease: "expo.inOut",
             delay,
-            scrollTrigger: { trigger: ref.current, start: "top 92%", once: true },
+            scrollTrigger: { trigger: ref.current, start: "top 92%", toggleActions: "play none none none" },
           }
         );
       });

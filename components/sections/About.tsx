@@ -33,7 +33,7 @@ export function About() {
         gsap.fromTo(
           "[data-frame]",
           { opacity: 0, x: -24, y: 24 },
-          { opacity: 1, x: 0, y: 0, duration: 1.6, ease: "expo.out", delay: 0.6, scrollTrigger: { trigger: ref.current, start: "top 60%", once: true } }
+          { opacity: 1, x: 0, y: 0, duration: 1.6, ease: "expo.out", delay: 0.6, scrollTrigger: { trigger: ref.current, start: "top 60%", toggleActions: "play none none none" } }
         );
       });
       return () => mm.revert();
