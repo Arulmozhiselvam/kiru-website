@@ -10,6 +10,10 @@ import { GoldParticles } from "@/components/ui/GoldParticles";
 const SEEN_KEY = "kiru-intro-seen";
 const MIN_MS = 1600; // the loader never flashes by faster than this
 const MAX_MS = 7000; // ...and never blocks the page longer than this
+const MIN_FULL_MS = 2900; // first visit: let all three poses be seen once
+
+/** Preloader frames: the artist's own poses, prepared as gold-ready greyscale. */
+const POSES = ["/images/kiru/loader/pose-1.webp", "/images/kiru/loader/pose-2.webp", "/images/kiru/loader/pose-3.webp"];
 
 /** Resolves when the hero photograph has actually loaded. */
 function heroImageReady(): Promise<void> {
@@ -28,8 +32,9 @@ const pageLoaded = () =>
   });
 
 /**
- * Preloader: a gold lotus draws itself while the site genuinely loads
- * (hero photograph, fonts, page), with a counter and hairline progress.
+ * Preloader: three of the artist's own poses, tinted gold, flow into one
+ * another like a dancer in motion while the site genuinely loads (hero
+ * photograph, fonts, page), with a counter and hairline progress.
  * When everything is ready the curtain splits open onto the hero.
  * No text — just light, line and number.
  */
@@ -67,7 +72,6 @@ export function Intro() {
         const p = progress.v;
         if (countRef.current) countRef.current.textContent = String(Math.round(p)).padStart(3, "0");
         gsap.set(q("[data-bar]"), { scaleX: p / 100 });
-        gsap.set(q("[data-petal]"), { strokeDashoffset: 1 - p / 100 });
       };
       render();
 
@@ -75,7 +79,7 @@ export function Intro() {
         heroImageReady(),
         document.fonts?.ready ?? Promise.resolve(),
         pageLoaded(),
-        new Promise((r) => setTimeout(r, seen || reduced ? 300 : MIN_MS)),
+        new Promise((r) => setTimeout(r, seen || reduced ? 300 : Math.max(MIN_MS, MIN_FULL_MS))),
       ];
       let finished = 0;
       let exited = false;
@@ -91,7 +95,7 @@ export function Intro() {
           return;
         }
         tl.to(progress, { v: 100, duration: 0.35, ease: "power2.out", onUpdate: render })
-          .to(q("[data-lotus]"), { scale: 1.12, rotate: 30, opacity: 0, duration: 0.9, ease: "power3.in" }, "+=0.15")
+          .to(q("[data-dancer]"), { scale: 1.08, opacity: 0, filter: "blur(6px)", duration: 0.9, ease: "power3.in" }, "+=0.15")
           .to(q("[data-count]"), { yPercent: -110, duration: 0.7, ease: "power3.in" }, "<")
           .to(q("[data-bar-wrap], [data-skip]"), { opacity: 0, duration: 0.4 }, "<")
           .to(q("[data-glow], canvas"), { opacity: 0, duration: 0.6 }, "<")
@@ -121,8 +125,17 @@ export function Intro() {
 
       // gentle idle motion while loading
       if (!reduced) {
-        gsap.fromTo(q("[data-lotus]"), { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: "expo.out" });
-        gsap.to(q("[data-lotus-spin]"), { rotate: 360, duration: 40, ease: "none", repeat: -1, transformOrigin: "50% 50%" });
+        gsap.fromTo(q("[data-dancer]"), { scale: 0.94, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "expo.out" });
+        // the three poses flow into one another, like a dancer moving
+        const poses = q("[data-pose]");
+        const cycle = gsap.timeline({ repeat: -1 });
+        poses.forEach((pose, i) => {
+          cycle
+            .fromTo(pose, { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power2.out" }, i * 0.95)
+            .to(pose, { opacity: 0, duration: 0.45, ease: "power2.in" }, i * 0.95 + 0.85);
+        });
+        // gentle sway
+        gsap.fromTo(q("[data-dancer]"), { rotate: -1.6 }, { rotate: 1.6, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: -1 });
         gsap.fromTo(q("[data-glow]"), { opacity: 0.5 }, { opacity: 1, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: -1 });
       }
 
@@ -143,10 +156,6 @@ export function Intro() {
 
   if (gone) return null;
 
-  // 8-petal lotus; each petal is a normalised path (pathLength=1) so it can
-  // be "drawn" by moving its dash offset from 1 → 0 with the progress.
-  const petals = Array.from({ length: 8 }, (_, i) => i * 45);
-
   return (
     <div ref={ref} data-intro role="progressbar" aria-label="Loading" aria-busy="true" className="fixed inset-0 z-[90]">
       {/* split curtain */}
@@ -157,43 +166,21 @@ export function Intro() {
         <div data-glow aria-hidden className="absolute left-1/2 top-1/2 h-[60vmin] w-[60vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(177,139,82,0.2)_0%,rgba(177,139,82,0.05)_45%,transparent_70%)]" />
         <GoldParticles density={70} />
 
-        {/* lotus ornament — draws itself with the progress */}
-        <div data-lotus className="relative h-[34vmin] max-h-64 w-[34vmin] max-w-64">
-          <svg data-lotus-spin viewBox="-50 -50 100 100" className="h-full w-full overflow-visible text-gold" aria-hidden>
-            <circle r="46" fill="none" stroke="currentColor" strokeWidth="0.25" opacity="0.35" />
-            <circle r="41" fill="none" stroke="currentColor" strokeWidth="0.2" opacity="0.3" strokeDasharray="0.6 2.4" />
-            {petals.map((deg) => (
-              <path
-                key={deg}
-                data-petal
-                pathLength={1}
-                d="M0 -6 C 9 -14, 9 -30, 0 -40 C -9 -30, -9 -14, 0 -6 Z"
-                transform={`rotate(${deg})`}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="0.6"
-                strokeLinejoin="round"
-                strokeDasharray="1 1"
-                strokeDashoffset="1"
-              />
-            ))}
-            {petals.map((deg) => (
-              <path
-                key={`i${deg}`}
-                data-petal
-                pathLength={1}
-                d="M0 -6 C 5 -11, 5 -20, 0 -26 C -5 -20, -5 -11, 0 -6 Z"
-                transform={`rotate(${deg + 22.5})`}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="0.45"
-                opacity="0.7"
-                strokeDasharray="1 1"
-                strokeDashoffset="1"
-              />
-            ))}
-            <circle r="3.2" fill="currentColor" opacity="0.9" />
-          </svg>
+        {/* dancer — three of her poses, tinted gold, cycling like movement */}
+        <div data-dancer className="relative h-[284px] w-[184px] md:h-[340px] md:w-[220px]" aria-hidden>
+          {POSES.map((src, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={src}
+              data-pose
+              src={src}
+              alt=""
+              decoding="async"
+              fetchPriority="high"
+              className="absolute inset-0 h-full w-full object-contain mix-blend-screen [filter:sepia(1)_saturate(2.6)_hue-rotate(-12deg)_brightness(1.08)_drop-shadow(0_0_22px_rgba(177,139,82,0.35))]"
+              style={{ opacity: i === 0 ? 1 : 0 }}
+            />
+          ))}
         </div>
       </div>
 
