@@ -5,7 +5,7 @@ import { site } from "@/content/site";
 export default function NotFound() {
   return (
     <main className="flex min-h-[100svh] flex-col items-center justify-center gap-8 bg-ink px-6 text-center text-ivory">
-      <BrandMark label={site.name} />
+      <BrandMark label={site.name} className="!h-28 md:!h-32" />
       <h1 className="display-lg">
         Lost in <span className="italic text-gold-soft">rhythm</span>
       </h1>

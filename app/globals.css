@@ -198,12 +198,6 @@ html[lang="ta"] .display-md {
 html[lang="ta"] .italic {
   font-style: normal;
 }
-html[lang="ta"] .brand-name {
-  font-family: var(--font-tamil);
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 1rem;
-}
 /* Tamil hero name: Tamil glyphs are wide and tall — scale down */
 html[lang="ta"] h1.display-xl {
   font-family: var(--font-tamil);
