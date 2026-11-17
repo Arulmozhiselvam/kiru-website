@@ -7,27 +7,20 @@ import { Media } from "@/components/ui/Media";
 import { RevealLines } from "@/components/ui/RevealLines";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Lightbox } from "@/components/ui/Lightbox";
-import { frameRatio, media } from "@/content/media";
-import { cn } from "@/lib/cn";
+import { media } from "@/content/media";
 
-/** Asymmetric editorial composition — mobile classes first, then md+. */
-const LAYOUT = [
-  "col-span-6 md:col-span-5",
-  "col-span-4 col-start-3 md:col-span-4 md:col-start-8 md:mt-40",
-  "col-span-5 md:col-span-4 md:col-start-2 md:-mt-12",
-  "col-span-4 col-start-3 md:col-span-3 md:col-start-8 md:-mt-6",
-  "col-span-6 md:col-span-5 md:col-start-1 md:mt-10",
-  "col-span-5 col-start-2 md:col-span-4 md:col-start-8 md:mt-32",
-];
+type Sized = { width: number; height: number };
 
-/** Wide (landscape) photos get a broad frame, alternating sides. */
-const WIDE = [
-  "col-span-6 md:col-span-7 md:col-start-1 md:mt-12",
-  "col-span-6 md:col-span-7 md:col-start-6 md:mt-12",
-];
-
-function slot(asset: { width: number; height: number }, i: number, wideIndex: number) {
-  return asset.width > asset.height ? WIDE[wideIndex % WIDE.length] : LAYOUT[i % LAYOUT.length];
+/** Places each photo (keeping its index) into the currently shortest column. */
+function balance<T extends Sized>(items: readonly T[], cols: number) {
+  const columns: { i: number; item: T }[][] = Array.from({ length: cols }, () => []);
+  const heights = new Array(cols).fill(0);
+  items.forEach((item, i) => {
+    const c = heights.indexOf(Math.min(...heights));
+    columns[c].push({ i, item });
+    heights[c] += item.height / item.width + 0.04; // + gap, in column-width units
+  });
+  return columns;
 }
 
 export function Gallery() {
@@ -42,17 +35,9 @@ export function Gallery() {
         gsap.utils.toArray<HTMLElement>("[data-item]").forEach((item, i) => {
           const frame = item.querySelector("[data-frame]");
           const img = item.querySelector("[data-img]");
-          const tl = gsap.timeline({ scrollTrigger: { trigger: item, start: "top 90%", toggleActions: "play none none none" } });
-          tl.fromTo(frame, { clipPath: i % 2 ? "inset(0% 0% 100% 0%)" : "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.5, ease: "expo.inOut" })
-            .fromTo(img, { scale: 1.4 }, { scale: 1, duration: 2, ease: "expo.out" }, 0.1)
-            .fromTo(item.querySelector("[data-cap]"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1 }, 0.8);
-
-          // gentle depth: alternate items drift at different speeds
-          gsap.to(item, {
-            yPercent: i % 3 === 0 ? -8 : i % 3 === 1 ? -3 : -12,
-            ease: "none",
-            scrollTrigger: { trigger: item, start: "top bottom", end: "bottom top", scrub: true },
-          });
+          const tl = gsap.timeline({ scrollTrigger: { trigger: item, start: "top 92%", toggleActions: "play none none none" } });
+          tl.fromTo(frame, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.4, ease: "expo.inOut", delay: (i % 3) * 0.08 })
+            .fromTo(img, { scale: 1.3 }, { scale: 1, duration: 1.8, ease: "expo.out" }, "<0.1");
         });
 
         gsap.fromTo("[data-marquee]", { xPercent: 0 }, {
@@ -67,8 +52,6 @@ export function Gallery() {
   );
 
   const n = media.gallery.length;
-  // running count of wide photos, so wide frames alternate left/right
-  const wideBefore = media.gallery.map((_, i) => media.gallery.slice(0, i).filter((a) => a.width > a.height).length);
   const alts = media.gallery.map((a, i) => (a.stock ? t.gallery.alts[i] : `${t.artistAlt} — ${i + 1}`));
 
   return (
@@ -91,9 +74,22 @@ export function Gallery() {
           <p className="max-w-xs text-sm text-ivory/45">{t.gallery.note}</p>
         </div>
 
-        <ul className="mt-20 grid grid-cols-6 gap-x-4 gap-y-10 md:mt-28 md:grid-cols-12 md:gap-x-6 md:gap-y-16">
-          {media.gallery.map((asset, i) => (
-            <li key={asset.src} data-item style={{ aspectRatio: frameRatio(asset, 0.58, 2.4) }} className={cn("relative self-start", slot(asset, i, wideBefore[i]))}>
+        {/* Masonry: every photo at its natural shape, balanced so the columns
+            end level — 2 columns on phones, 3 from tablet up */}
+        {([
+          [2, "flex md:hidden gap-3", "gap-3"],
+          [3, "hidden md:flex gap-6", "gap-6"],
+        ] as const).map(([cols, rowCls, colCls]) => (
+          <div key={cols} className={`mt-16 items-start md:mt-24 ${rowCls}`}>
+            {balance(media.gallery, cols).map((column, c) => (
+              <ul key={c} className={`flex min-w-0 flex-1 flex-col ${colCls}`}>
+                {column.map(({ i, item: asset }) => (
+            <li
+              key={asset.src}
+              data-item
+              style={{ aspectRatio: `${asset.width} / ${asset.height}` }}
+              className="relative block w-full"
+            >
               <button
                 type="button"
                 data-cursor={locale === "ta" ? "பார்" : "View"}
@@ -104,19 +100,22 @@ export function Gallery() {
                 <span data-frame className="absolute inset-0 block overflow-hidden bg-ink">
                   <span data-img className="absolute inset-0 block">
                     <span className="absolute inset-0 block transition-transform duration-[1.6s] ease-[var(--ease-cinematic)] group-hover:scale-[1.07] group-focus-visible:scale-[1.07]">
-                      <Media asset={asset} alt={alts[i]} sizes="(min-width: 768px) 45vw, 90vw" />
+                      <Media asset={asset} alt={alts[i]} sizes="(min-width: 768px) 32vw, 50vw" />
                     </span>
                   </span>
-                  <span aria-hidden className="absolute inset-0 bg-ink/0 transition-colors duration-700 group-hover:bg-ink/25" />
-                </span>
-                <span data-cap className="absolute -bottom-7 left-0 flex w-full items-center justify-between text-[0.7rem] tracking-[0.25em] text-ivory/40">
-                  <span className="tabular-nums">{String(i + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}</span>
-                  <span className="h-px w-0 bg-gold transition-all duration-700 group-hover:w-12" />
+                  <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/0 to-ink/0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 group-focus-visible:opacity-100" />
+                  <span className="absolute inset-x-4 bottom-4 flex translate-y-2 items-center gap-3 text-[0.7rem] tracking-[0.25em] text-ivory/90 opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+                    <span className="tabular-nums">{String(i + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}</span>
+                    <span className="h-px flex-1 bg-gold/70" />
+                  </span>
                 </span>
               </button>
             </li>
-          ))}
-        </ul>
+                ))}
+              </ul>
+            ))}
+          </div>
+        ))}
       </div>
 
       <Lightbox
