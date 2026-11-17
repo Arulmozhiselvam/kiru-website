@@ -1,9 +1,11 @@
 /**
  * BILINGUAL CONTENT — English & Tamil.
  *
- * Facts used: name, Malaysia, Bharatanatyam, Kalakshetra style, began dancing
- * at age 8, Shivarpanam (2024), International Cultural Day at HWUM
- * (Feb 2026, from her photos), Arangetram in 2027. No awards, teachers, venues or dates have been
+ * Facts used (confirmed by the family): born 2004; began Bharatanatyam at
+ * age 6 (2010); learned two years, paused one year, returned at age 9 (2013);
+ * Salangai Pooja in December 2016 (age 12); Shivarpanam (2024); International
+ * Cultural Day at HWUM (Feb 2026); Arangetram in 2027 — 17 years after she
+ * began. Kalakshetra style, Malaysia. No awards, teachers or venues have been
  * invented — add them here as they become available.
  */
 
@@ -58,7 +60,7 @@ const en: Dictionary = {
   stockNote: "Temporary stock image",
   meta: {
     description:
-      "Kiruthigaah Ramesh — Bharatanatyam artist from Malaysia, trained in the Kalakshetra style and dancing since the age of eight. Arangetram 2027. Where Tradition Becomes Expression.",
+      "Kiruthigaah Ramesh — Bharatanatyam artist from Malaysia, trained in the Kalakshetra style and dancing since the age of six. Arangetram 2027. Where Tradition Becomes Expression.",
   },
   nav: {
     home: "Home", about: "About", art: "Art", gallery: "Gallery", journey: "Journey", contact: "Contact",
@@ -74,13 +76,15 @@ const en: Dictionary = {
     heading: ["A life", "told in", "rhythm & grace"],
     paragraphs: [
       "Kiruthigaah Ramesh is a Bharatanatyam artist from Malaysia, trained in the Kalakshetra style — a tradition known for its clarity of line, precision and quiet intensity.",
-      "She took her first steps in Bharatanatyam at the age of eight. What began as a child's fascination with rhythm grew into a lifelong devotion: years of patient practice, of adavus repeated until they became instinct, and of learning how a single glance can carry an entire story.",
-      "Today she brings that devotion to the stage — and is preparing for her Arangetram in 2027, the debut solo performance that marks a dancer's coming of age in the art.",
+      "She took her first steps in Bharatanatyam at the age of six. After two years of learning and a short pause, she returned to the art at nine — and this time, it held her. At twelve she received her Salangai Pooja, the blessing of her ankle bells, and began dancing as a performer.",
+      "What began as a child's fascination with rhythm has become a lifelong devotion: years of patient practice, of adavus repeated until they became instinct, and of learning how a single glance can carry an entire story.",
+      "Today she is preparing for her Arangetram in 2027 — seventeen years after her very first step — the debut solo performance that marks a dancer's coming of age in the art.",
     ],
     facts: [
       { label: "Art form", value: "Bharatanatyam" },
       { label: "Style", value: "Kalakshetra" },
-      { label: "Dancing since", value: "Age 8" },
+      { label: "Dancing since", value: "Age 6 · 2010" },
+      { label: "Salangai Pooja", value: "December 2016" },
       { label: "Based in", value: "Malaysia" },
     ],
   },
@@ -106,18 +110,20 @@ const en: Dictionary = {
   journey: {
     label: "Artistic Journey",
     heading: ["Every step,", "a story"],
-    intro: "From a child's first steps at the age of eight to the threshold of her Arangetram — a path of discipline, devotion and joy.",
+    intro: "Seventeen years — from a six-year-old's first step to the threshold of her Arangetram. A path of discipline, devotion and joy.",
     milestones: [
-      { year: "Age 8", title: "The first step",
-        text: "Kiruthigaah begins learning Bharatanatyam — the first namaskaram, the first adavus, and the start of a lifelong conversation with rhythm." },
-      { year: "Training", title: "The discipline of the Kalakshetra style",
-        text: "Years of steady practice build the foundation: precise adavus, the clean geometry of the araimandi, and the patient study of hastas and abhinaya." },
-      { year: "Stage", title: "Into the light",
-        text: "Performing alongside fellow dancers — including the stage production Shivarpanam in 2024 — she learns what the classroom cannot teach: stage presence, stamina, and the quiet joy of sharing the art with an audience." },
-      { year: "Today", title: "Finding her own voice",
-        text: "Her dance grows into storytelling — from the many-armed goddess to the poetry of a single gesture — and into solo performances such as International Cultural Day at HWUM in February 2026." },
+      { year: "2010", title: "Age 6 · The first step",
+        text: "Kiruthigaah begins learning Bharatanatyam — the first namaskaram, the first adavus, and the start of a lifelong conversation with rhythm. She trains for two years before a one-year pause." },
+      { year: "2013", title: "Age 9 · Returning to the rhythm",
+        text: "She comes back to the art with renewed devotion. Steady training in the Kalakshetra style builds the foundation: precise adavus, the clean geometry of the araimandi, and the patient study of hastas and abhinaya." },
+      { year: "2016", title: "Age 12 · Salangai Pooja",
+        text: "In December, her salangai — the ankle bells — are blessed and tied for the first time. A sacred rite of passage: from student to performer, ready to dance before an audience." },
+      { year: "2024", title: "Shivarpanam",
+        text: "Performing alongside fellow dancers in the stage production Shivarpanam, she learns what the classroom cannot teach: stage presence, stamina, and the quiet joy of sharing the art." },
+      { year: "2026", title: "International Cultural Day",
+        text: "A solo performance under the night sky at International Cultural Day, HWUM, in February — her dance growing into storytelling, from the many-armed goddess to the poetry of a single gesture." },
       { year: "2027", title: "Arangetram",
-        text: "Her debut solo performance — the culmination of her training, offered before her guru, family and audience. Date and venue to be announced." },
+        text: "Seventeen years after her first step, her debut solo performance — the culmination of her training, offered before her guru, family and audience. Date and venue to be announced." },
     ],
   },
   gallery: {
@@ -155,7 +161,7 @@ const ta: Dictionary = {
   stockNote: "தற்காலிகப் படம்",
   meta: {
     description:
-      "கிருத்திகா ரமேஷ் — மலேசியாவைச் சேர்ந்த கலாக்ஷேத்ரா பாணி பரதநாட்டியக் கலைஞர்; எட்டு வயது முதல் நடனமாடுகிறார். அரங்கேற்றம் 2027. மரபு வெளிப்பாடாக மலரும் இடம்.",
+      "கிருத்திகா ரமேஷ் — மலேசியாவைச் சேர்ந்த கலாக்ஷேத்ரா பாணி பரதநாட்டியக் கலைஞர்; ஆறு வயது முதல் நடனமாடுகிறார். அரங்கேற்றம் 2027. மரபு வெளிப்பாடாக மலரும் இடம்.",
   },
   nav: {
     home: "முகப்பு", about: "அறிமுகம்", art: "கலை", gallery: "படங்கள்", journey: "பயணம்", contact: "தொடர்பு",
@@ -171,13 +177,15 @@ const ta: Dictionary = {
     heading: ["தாளத்திலும்", "நளினத்திலும்", "சொல்லப்படும் வாழ்க்கை"],
     paragraphs: [
       "கிருத்திகா ரமேஷ் மலேசியாவைச் சேர்ந்த பரதநாட்டியக் கலைஞர். கோடுகளின் தெளிவு, துல்லியம், அமைதியான தீவிரம் ஆகியவற்றுக்குப் பெயர் பெற்ற கலாக்ஷேத்ரா பாணியில் பயிற்சி பெற்றவர்.",
-      "எட்டு வயதில் பரதநாட்டியத்தில் தனது முதல் அடியை எடுத்து வைத்தார். தாளத்தின் மீதான ஒரு சிறுமியின் ஈர்ப்பாகத் தொடங்கியது, வாழ்நாள் அர்ப்பணிப்பாக வளர்ந்தது — இயல்பாகும் வரை மீண்டும் மீண்டும் பயிலப்பட்ட அடவுகள், ஒரே பார்வையில் முழுக் கதையையும் சொல்லக் கற்றுக்கொண்ட ஆண்டுகள்.",
-      "இன்று அந்த அர்ப்பணிப்பை மேடைக்குக் கொண்டு வருகிறார் — 2027-இல் நடைபெறவிருக்கும் தனது அரங்கேற்றத்திற்குத் தயாராகி வருகிறார்; ஒரு நடனக் கலைஞர் கலையில் முழுமை பெறுவதைக் குறிக்கும் முதல் தனி நிகழ்ச்சி அது.",
+      "ஆறு வயதில் பரதநாட்டியத்தில் தனது முதல் அடியை எடுத்து வைத்தார். இரண்டு ஆண்டுகள் பயின்று, ஒரு சிறு இடைவேளைக்குப் பின், ஒன்பது வயதில் மீண்டும் கலைக்குத் திரும்பினார் — இம்முறை அது அவரை முழுமையாக ஆட்கொண்டது. பன்னிரண்டு வயதில் சலங்கை பூஜை பெற்று, மேடைக் கலைஞராக ஆடத் தொடங்கினார்.",
+      "தாளத்தின் மீதான ஒரு சிறுமியின் ஈர்ப்பாகத் தொடங்கியது, வாழ்நாள் அர்ப்பணிப்பாக வளர்ந்தது — இயல்பாகும் வரை மீண்டும் மீண்டும் பயிலப்பட்ட அடவுகள், ஒரே பார்வையில் முழுக் கதையையும் சொல்லக் கற்றுக்கொண்ட ஆண்டுகள்.",
+      "இன்று, தனது முதல் அடிக்குப் பதினேழு ஆண்டுகளுக்குப் பின், 2027-இல் நடைபெறவிருக்கும் அரங்கேற்றத்திற்குத் தயாராகி வருகிறார் — ஒரு நடனக் கலைஞர் கலையில் முழுமை பெறுவதைக் குறிக்கும் முதல் தனி நிகழ்ச்சி அது.",
     ],
     facts: [
       { label: "கலை வடிவம்", value: "பரதநாட்டியம்" },
       { label: "பாணி", value: "கலாக்ஷேத்ரா" },
-      { label: "நடனம் தொடங்கியது", value: "8 வயதில்" },
+      { label: "நடனம் தொடங்கியது", value: "6 வயதில் · 2010" },
+      { label: "சலங்கை பூஜை", value: "டிசம்பர் 2016" },
       { label: "இருப்பிடம்", value: "மலேசியா" },
     ],
   },
@@ -203,18 +211,20 @@ const ta: Dictionary = {
   journey: {
     label: "கலைப் பயணம்",
     heading: ["ஒவ்வொரு அடியும்", "ஒரு கதை"],
-    intro: "எட்டு வயதின் முதல் அடிகளிலிருந்து அரங்கேற்றத்தின் வாசல் வரை — ஒழுக்கம், அர்ப்பணிப்பு, மகிழ்ச்சி நிறைந்த ஒரு பயணம்.",
+    intro: "பதினேழு ஆண்டுகள் — ஆறு வயதுச் சிறுமியின் முதல் அடியிலிருந்து அரங்கேற்றத்தின் வாசல் வரை. ஒழுக்கம், அர்ப்பணிப்பு, மகிழ்ச்சி நிறைந்த ஒரு பயணம்.",
     milestones: [
-      { year: "8 வயது", title: "முதல் அடி",
-        text: "கிருத்திகா பரதநாட்டியம் கற்கத் தொடங்குகிறார் — முதல் நமஸ்காரம், முதல் அடவுகள், தாளத்துடனான வாழ்நாள் உரையாடலின் தொடக்கம்." },
-      { year: "பயிற்சி", title: "கலாக்ஷேத்ரா பாணியின் ஒழுக்கம்",
-        text: "ஆண்டுகால தொடர் பயிற்சி அடித்தளம் அமைக்கிறது: துல்லியமான அடவுகள், அரைமண்டியின் தெளிவான வடிவியல், ஹஸ்தங்கள் மற்றும் அபிநயத்தின் பொறுமையான கற்றல்." },
-      { year: "மேடை", title: "ஒளியை நோக்கி",
-        text: "சக நடனக் கலைஞர்களுடன் மேடையில் ஆடுவதன் மூலம் — 2024-இல் நடைபெற்ற ‘சிவார்ப்பணம்’ தயாரிப்பு உட்பட — வகுப்பறை கற்றுத்தர முடியாதவற்றைக் கற்கிறார்: மேடை ஆளுமை, உறுதி, கலையைப் பகிர்வதன் அமைதியான மகிழ்ச்சி." },
-      { year: "இன்று", title: "தனக்கென ஒரு குரல்",
-        text: "அவரது நடனம் கதைசொல்லலாக வளர்கிறது — பல கரங்கள் கொண்ட தேவியிலிருந்து ஒற்றை முத்திரையின் கவிதை வரை — பிப்ரவரி 2026-இல் HWUM-இல் நடைபெற்ற சர்வதேச கலாச்சார தினம் போன்ற தனி நிகழ்ச்சிகளாகவும் மலர்கிறது." },
+      { year: "2010", title: "6 வயது · முதல் அடி",
+        text: "கிருத்திகா பரதநாட்டியம் கற்கத் தொடங்குகிறார் — முதல் நமஸ்காரம், முதல் அடவுகள், தாளத்துடனான வாழ்நாள் உரையாடலின் தொடக்கம். இரண்டு ஆண்டுகள் பயின்ற பின் ஓராண்டு இடைவேளை." },
+      { year: "2013", title: "9 வயது · தாளத்திற்குத் திரும்புதல்",
+        text: "புதுப்பிக்கப்பட்ட அர்ப்பணிப்புடன் கலைக்குத் திரும்புகிறார். கலாக்ஷேத்ரா பாணியின் தொடர் பயிற்சி அடித்தளம் அமைக்கிறது: துல்லியமான அடவுகள், அரைமண்டியின் தெளிவான வடிவியல், ஹஸ்தங்கள் மற்றும் அபிநயத்தின் பொறுமையான கற்றல்." },
+      { year: "2016", title: "12 வயது · சலங்கை பூஜை",
+        text: "டிசம்பரில் அவரது சலங்கைகள் முதன்முறையாக ஆசீர்வதிக்கப்பட்டுக் கட்டப்படுகின்றன. மாணவியிலிருந்து மேடைக் கலைஞராக — ரசிகர்கள் முன் ஆடத் தயாராகும் ஒரு புனிதச் சடங்கு." },
+      { year: "2024", title: "சிவார்ப்பணம்",
+        text: "‘சிவார்ப்பணம்’ மேடைத் தயாரிப்பில் சக நடனக் கலைஞர்களுடன் ஆடுவதன் மூலம், வகுப்பறை கற்றுத்தர முடியாதவற்றைக் கற்கிறார்: மேடை ஆளுமை, உறுதி, கலையைப் பகிர்வதன் அமைதியான மகிழ்ச்சி." },
+      { year: "2026", title: "சர்வதேச கலாச்சார தினம்",
+        text: "பிப்ரவரியில் HWUM-இல் நடைபெற்ற சர்வதேச கலாச்சார தினத்தில், இரவு வானின் கீழ் ஒரு தனி நிகழ்ச்சி — பல கரங்கள் கொண்ட தேவியிலிருந்து ஒற்றை முத்திரையின் கவிதை வரை, கதைசொல்லலாக வளரும் அவரது நடனம்." },
       { year: "2027", title: "அரங்கேற்றம்",
-        text: "அவரது முதல் தனி நடன நிகழ்ச்சி — பயிற்சியின் நிறைவு, குரு, குடும்பம், ரசிகர்கள் முன்னிலையில் அர்ப்பணிக்கப்படுகிறது. தேதியும் இடமும் விரைவில் அறிவிக்கப்படும்." },
+        text: "முதல் அடிக்குப் பதினேழு ஆண்டுகளுக்குப் பின், அவரது முதல் தனி நடன நிகழ்ச்சி — பயிற்சியின் நிறைவு, குரு, குடும்பம், ரசிகர்கள் முன்னிலையில் அர்ப்பணிக்கப்படுகிறது. தேதியும் இடமும் விரைவில் அறிவிக்கப்படும்." },
     ],
   },
   gallery: {

@@ -47,7 +47,7 @@ Put the real files in `public/images/` (JPG/WebP, ~2400px on the long edge) and 
 
 ### 3. Text — `content/dictionary.ts` (English + Tamil)
 The About introduction and Journey timeline are written from the confirmed facts: name,
-Malaysia, Bharatanatyam, Kalakshetra style, began dancing at age 8, Arangetram in 2027.
+Malaysia, Bharatanatyam, Kalakshetra style, began at age 6 (2010), Salangai Pooja Dec 2016, Arangetram in 2027.
 Journey stages use labels (Age 8 · Training · Stage · Today · 2027) rather than invented years.
 No awards, teachers, venues or dates were invented — add real ones in `journey.milestones`
 and `about.paragraphs` as they become available. The artist's name is localised via `name`

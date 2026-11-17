@@ -91,7 +91,8 @@ export const media = {
     aesthetics: pose,
   },
   /** Photos beside Journey milestones, by index (null = text only) */
-  journey: [null, ceremony, shivarpanam, tableau, null] as (MediaAsset | null)[],
+  // 2010 · 2013 · 2016 Salangai Pooja · 2024 Shivarpanam · 2026 Cultural Day · 2027
+  journey: [null, hall1, salangai, shivarpanam, spotlight, null] as (MediaAsset | null)[],
   gallery: [
     musician, stage, shivarpanam, tableau, hall2, anniversary, about,
     certificate, ceremony, costume, spotlight, pose, hall1, expressive, salangai,
