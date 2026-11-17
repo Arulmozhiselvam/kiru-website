@@ -62,6 +62,8 @@ const spotlight = kiru("spotlight", 1178, 1224, "50% 60%");
 // IMG_6306 — receiving a certificate on stage
 const ceremony = kiru("ceremony", 1178, 1084, "50% 40%");
 // WhatsApp 2026-11-17 — feet in motion: salangai, alta, fanned pleats
+// "Bharatnatyam gungroo.jpg" — Nataraja with salangai (black & white)
+const nataraja = kiru("nataraja", 736, 1308, "50% 38%");
 const salangai = kiru("salangai", 1065, 810, "50% 80%");
 
 export const media = {
@@ -71,8 +73,8 @@ export const media = {
   heroVideo: null as string | null,
   // About section ("A life told in rhythm & grace"): IMG_6293
   portrait: { ...expressive, position: "55% 22%" },
-  // Arangetram background: feet, salangai and pleats on a dark stage
-  arangetram: salangai,
+  // Arangetram background: Nataraja with salangai (black & white)
+  arangetram: nataraja,
   art: {
     // Expression (Abhinaya): IMG_6301, with a live flautist
     abhinaya: { ...musician, position: "50% 22%" },
