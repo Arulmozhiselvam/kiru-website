@@ -61,16 +61,16 @@ const anniversary = kiru("anniversary", 1178, 620, "50% 35%");
 const spotlight = kiru("spotlight", 1178, 1224, "50% 60%");
 // IMG_6306 — receiving a certificate on stage
 const ceremony = kiru("ceremony", 1178, 1084, "50% 40%");
-// WhatsApp 2026-11-17 — feet in motion: salangai, alta, fanned pleats
-// Unsplash stock (free licence, no faces): lit oil lamps in darkness
-// https://unsplash.com/photos/SC5gagv4gaA
-const lamps = { src: "/images/kiru/lamps.jpg", width: 2400, height: 1600, position: "50% 55%" } as MediaAsset;
+// Unsplash stock (free licence, no people): closed red stage curtain
+// https://unsplash.com/photos/WW1jsInXgwM
+const curtain = { src: "/images/kiru/curtain.jpg", width: 2400, height: 1602, position: "50% 60%" } as MediaAsset;
 // New photos (screenshots 2026-11-17)
 const moment1 = kiru("moment-01", 748, 770, "50% 35%");
 const moment2 = kiru("moment-02", 726, 787, "50% 40%");
 const moment3 = kiru("moment-03", 532, 666, "50% 30%");
 const moment4 = kiru("moment-04", 400, 615, "50% 30%");
 const moment5 = kiru("moment-05", 492, 706, "50% 30%");
+// WhatsApp 2026-11-17 — feet in motion: salangai, alta, fanned pleats
 const salangai = kiru("salangai", 1065, 810, "50% 80%");
 
 export const media = {
@@ -80,8 +80,8 @@ export const media = {
   heroVideo: null as string | null,
   // About section ("A life told in rhythm & grace"): IMG_6293
   portrait: { ...expressive, position: "55% 22%" },
-  // Arangetram background: oil lamps glowing in darkness (stock, no faces)
-  arangetram: lamps,
+  // Arangetram background: closed stage curtain — the debut about to begin
+  arangetram: curtain,
   art: {
     // Expression (Abhinaya): IMG_6301, with a live flautist
     abhinaya: { ...musician, position: "50% 22%" },
